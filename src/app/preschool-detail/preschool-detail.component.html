@@ -1,0 +1,17 @@
+<div *ngIf="preschool">
+    <h2>{{preschool.preschoolName | uppercase}} Details</h2>
+    <div><span>id: </span>{{preschool.id}}</div>
+    <div>
+      <label>Name:
+        <input [(ngModel)]="preschool.preschoolName" placeholder="name"/>
+      </label>
+      <label>Price:
+        <input [(ngModel)]="preschool.price" placeholder="price"/>
+      </label>
+      <label>End Of Early Registration Date:
+        <input [(ngModel)]="preschool.endOfEarlyRegistrationDate" placeholder="endOfEarlyRegistrationDate"/>
+      </label>
+    </div>
+    <button (click)="goBack()">go back</button>
+    <button (click)="save()">save</button>
+  </div>

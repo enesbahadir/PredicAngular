@@ -1,0 +1,10 @@
+
+<ul class="preschools">
+    <li *ngFor="let preschool of preschools">
+      <a routerLink="/preschools/{{preschool.id}}">
+        <span class="badge">{{preschool.id}}</span> {{preschool.preschoolName}}
+      </a>
+      <button class="delete" title="delete preschool"
+        (click)="delete(preschool)">x</button>
+    </li>
+  </ul>
