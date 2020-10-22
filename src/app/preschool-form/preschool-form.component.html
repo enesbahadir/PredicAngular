@@ -1,12 +1,12 @@
 <div class="container">
     <div [hidden]="submitted">
-      <h1>Hero Form</h1>
-      <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+      <h1>Preschool Add Form</h1>
+      <form (ngSubmit)="newPreschool()" #preschoolForm="ngForm">
         <div class="form-group">
           <label for="name">Name</label>
           <input type="text" class="form-control" id="name"
                  required
-                 [(ngModel)]="model.preschoolName" name="name"
+                 [(ngModel)]="preschool.preschoolName" name="name"
                  #name="ngModel">
           <div [hidden]="name.valid || name.pristine"
                class="alert alert-danger">
@@ -15,25 +15,20 @@
         </div>
   
         <div class="form-group">
-          <label for="alterEgo">Alter Ego</label>
-          <input type="text" class="form-control" id="alterEgo"
-                 [(ngModel)]="model.price" name="alterEgo">
+          <label for="price">Price</label>
+          <input type="text" class="form-control" id="price"
+                 [(ngModel)]="preschool.price" name="price">
         </div>
   
         <div class="form-group">
-          <label for="power">Hero Power</label>
-          <input type="text" class="form-control" id="alterEgo"
-                 [(ngModel)]="model.endOfEarlyRegistrationDate" name="alterEgo">
+          <label for="endOfEarlyRegistrationDate">End Of Early Registration Date</label>
+          <input type="date" class="form-control" id="endOfEarlyRegistrationDate"
+                 [(ngModel)]="preschool.endOfEarlyRegistrationDate" name="endOfEarlyRegistrationDate">
           
         </div>
   
-        <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Submit</button>
-        <button type="button" class="btn btn-default" (click)="newHero(); heroForm.reset()">New Hero</button>
-        <i>with</i> reset
-  
-        &nbsp;&nbsp;
-        <button type="button" class="btn btn-default" (click)="newHero()">New Hero</button>
-        <i>without</i> reset
+        <button type="button" class="btn btn-default" (click)="newPreschool(); preschoolForm.reset()">New Hero</button>
+
 
       </form>
     </div>

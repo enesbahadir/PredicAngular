@@ -1,5 +1,11 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Preschool } from '../preschool';
+import { PreschoolDetailComponent } from '../preschool-detail/preschool-detail.component';
+import { PreschoolService } from '../preschool.service';
+import { PRESCHOOLS } from '../preschoolList';
+import { PreschoolComponent } from '../preschools/preschool.component';
 
 @Component({
   selector: 'app-preschool-form',
@@ -8,15 +14,46 @@ import { Preschool } from '../preschool';
 })
 export class PreschoolFormComponent implements OnInit {
 
-  constructor() { }
+  preschoolForm: FormGroup;
+  preschool: Preschool = {preschoolName: "", price: 0, 
+    endOfEarlyRegistrationDate: "", id:PRESCHOOLS.length+1};
+  x:any;
+  constructor(private preschoolService: PreschoolService, private preschoolComponent: PreschoolComponent) { }
 
   ngOnInit(): void {
+    this.preschoolForm = new FormGroup({
+      name : new FormControl(this.preschool.preschoolName, [
+        Validators.required,
+        Validators.minLength(4)
+      ]),
+      price : new FormControl(this.preschool.price),
+      endOfEarlyRegistrationDate : new FormControl(this.preschool.endOfEarlyRegistrationDate)
+    });
   }
+
+  get name() { return this.preschoolForm.get('name').value; }
+
+  get price() { return this.preschoolForm.get('price').value; }
+
+  get endOfEarlyRegistrationDate() { return this.preschoolForm.get('endOfEarlyRegistrationDate').value; }
 
   submitted = false;
 
-  onSubmit() { this.submitted = true; }
+  onSubmit() {  }
 
-  model: Preschool;
+  newPreschool() {
+     this.preschoolService.addPreschool(this.preschool).subscribe((res: HttpResponse<Preschool>)=>{
+      debugger;   
+      if(res){
+        /* this.router.navigateByUrl('/preschools', { skipLocationChange: true }).then(() => {
+          this.router.navigate([this.location.path()]);
+          }); 
+        */
+          this.preschoolComponent.ngOnInit();
+          }
+     });
+  }
+
+  
 
 }

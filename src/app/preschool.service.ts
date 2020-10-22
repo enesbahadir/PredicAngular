@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Observable, of } from 'rxjs';
+import { observable, Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { Preschool } from './preschool'
@@ -57,11 +57,10 @@ export class PreschoolService {
     //////// Save methods //////////
 
   /** POST: add a new preschool to the server */
-  addPreschool(preschool: Preschool): Observable<Preschool> {
-    return this.http.post<Preschool>(this.preschoolUrl, preschool, this.httpOptions).pipe(
-      tap((newPreschool: Preschool) => this.log(`added preschool w/ id=${newPreschool.id}`)),
-      catchError(this.handleError<Preschool>('addPreschool'))
-    );
+  addPreschool(preschool: Preschool) {
+    return this.http.post<Preschool>(`${this.preschoolUrl}`, preschool, {
+      observe: 'response'
+    });
   }
 
   /** DELETE: delete the preschool from the server */
