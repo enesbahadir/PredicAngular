@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Preschool } from '../preschool';
-import { PreschoolService } from '../preschool.service';
+import { Preschool } from '../model/preschool';
+import { PreschoolService } from '../service/preschool.service';
 
 @Component({
   selector: 'app-preschool',

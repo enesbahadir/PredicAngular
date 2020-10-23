@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { observable, Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { Preschool } from './preschool'
+import { Preschool } from '../model/preschool'
 
 @Injectable({
   providedIn: 'root'
@@ -45,12 +45,12 @@ export class PreschoolService {
         );
     }
 
-    /** GET hero by id. Will 404 if id not found */
+    /** GET preschool by id. Will 404 if id not found */
   getPreschool(id: number): Observable<Preschool> {
     const url = `${this.preschoolUrl}/${id}`;
     return this.http.get<Preschool>(url).pipe(
-      tap(_ => this.log(`fetched hero id=${id}`)),
-      catchError(this.handleError<Preschool>(`getHero id=${id}`))
+      tap(_ => this.log(`fetched preschool id=${id}`)),
+      catchError(this.handleError<Preschool>(`getPreschool id=${id}`))
     );
   }
 

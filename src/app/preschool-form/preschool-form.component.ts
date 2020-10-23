@@ -1,10 +1,10 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Preschool } from '../preschool';
+import { Preschool } from '../model/preschool';
 import { PreschoolDetailComponent } from '../preschool-detail/preschool-detail.component';
-import { PreschoolService } from '../preschool.service';
-import { PRESCHOOLS } from '../preschoolList';
+import { PreschoolService } from '../service/preschool.service';
+import { PRESCHOOLS } from '../model/preschoolList';
 import { PreschoolComponent } from '../preschools/preschool.component';
 
 @Component({
@@ -17,7 +17,7 @@ export class PreschoolFormComponent implements OnInit {
   preschoolForm: FormGroup;
   preschool: Preschool = {preschoolName: "", price: 0, 
     endOfEarlyRegistrationDate: "", id:PRESCHOOLS.length+1};
-  x:any;
+ 
   constructor(private preschoolService: PreschoolService, private preschoolComponent: PreschoolComponent) { }
 
   ngOnInit(): void {
@@ -42,13 +42,8 @@ export class PreschoolFormComponent implements OnInit {
   onSubmit() {  }
 
   newPreschool() {
-     this.preschoolService.addPreschool(this.preschool).subscribe((res: HttpResponse<Preschool>)=>{
-      debugger;   
+     this.preschoolService.addPreschool(this.preschool).subscribe((res: HttpResponse<Preschool>)=>{  
       if(res){
-        /* this.router.navigateByUrl('/preschools', { skipLocationChange: true }).then(() => {
-          this.router.navigate([this.location.path()]);
-          }); 
-        */
           this.preschoolComponent.ngOnInit();
           }
      });

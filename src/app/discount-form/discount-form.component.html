@@ -1,0 +1,50 @@
+<div class="example-container">
+    <h1>Discount Add Form</h1>
+    <form (ngSubmit)="newDiscount()" #discountForm="ngForm">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Discount Name</mat-label>
+      <input matInput [(ngModel)]="discount.discountName" name="discountNameInput">
+    </mat-form-field>
+    <br>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Discount Type</mat-label>
+      <mat-select [(ngModel)]="discount.discountType" name="discountTypeSelect">
+        <mat-option value="PERCENTAGE">PERCENTAGE</mat-option>
+        <mat-option value="AMOUNT">AMOUNT</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+
+    <mat-label>User Type</mat-label>
+    <mat-list-item *ngFor="let item of userTypeList" >
+    <mat-checkbox name="userTypeCheckBox"
+        [(ngModel)]="item.checked"
+        [disabled]="item.disabled"
+        [labelPosition]="item.labelPosition"
+    >{{ item.name }}</mat-checkbox>
+    </mat-list-item>
+    <br>
+
+    <mat-form-field appearance="fill">
+    <mat-label>Organization Name </mat-label>
+    <mat-select [(ngModel)]="discount.organizationName" name="organizationNameSelect">
+        <mat-option value="SAGLIK">SAGLIK</mat-option>
+        <mat-option value="ANADOLU">ANADOLU</mat-option>
+        <mat-option value="NONE">NONE</mat-option>
+    </mat-select>
+    </mat-form-field>
+    <br>
+
+    <mat-label>Discount Values</mat-label>
+    <mat-list-item *ngFor="let item of preschools, let i = index">
+        <mat-checkbox name="{{'discountValuesCheckBox' + i}}">{{ item.preschoolName }}</mat-checkbox>
+        <mat-form-field appearance="fill">
+            <input matInput id="{{'discountValuesText' + i}}" >
+        </mat-form-field>
+        <br>
+    </mat-list-item>
+    <a mat-flat-button color="primary" (click)="newDiscount()">Save</a>
+</form>
+  </div>

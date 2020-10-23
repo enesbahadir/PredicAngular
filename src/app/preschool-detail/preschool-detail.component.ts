@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { Preschool } from '../preschool';
-import { PreschoolService } from '../preschool.service';
+import { Preschool } from '../model/preschool';
+import { PreschoolService } from '../service/preschool.service';
 
 @Component({
   selector: 'app-preschool-detail',

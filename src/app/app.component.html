@@ -1,2 +1,17 @@
-<h1>{{title}}</h1>
-<router-outlet></router-outlet>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=block" rel="stylesheet">
+<mat-toolbar>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>{{title}}</span>
+  <span class="example-spacer"></span>
+  <a mat-raised-button routerLink="/discounts">Discounts</a>
+  <a mat-raised-button routerLink="/preschools">Preschools</a>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>share</mat-icon>
+  </button>
+</mat-toolbar>
+<div class="mat-app-background basic-container">
+  <router-outlet></router-outlet>
+</div>
+
