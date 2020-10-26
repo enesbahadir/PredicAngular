@@ -1,12 +1,12 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=block" rel="stylesheet">
-<mat-toolbar>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-    <mat-icon>menu</mat-icon>
+<mat-toolbar color="primary">
+  <button mat-icon-button class="example-icon" routerLink="/dashboard">
+    <mat-icon>home</mat-icon>
   </button>
   <span>{{title}}</span>
   <span class="example-spacer"></span>
-  <a mat-raised-button routerLink="/discounts">Discounts</a>
-  <a mat-raised-button routerLink="/preschools">Preschools</a>
+  <button mat-raised-button color="primary" routerLink="/discounts">Discounts</button>
+  <button mat-raised-button color="primary" routerLink="/preschools">Preschools</button>
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
     <mat-icon>share</mat-icon>
   </button>

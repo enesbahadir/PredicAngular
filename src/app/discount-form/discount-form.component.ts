@@ -1,8 +1,6 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { debug } from 'console';
-import { brotliCompress } from 'zlib';
 import { DiscountComponent } from '../discount/discount.component';
 import { Discount } from '../model/discount';
 import { DiscountValues } from '../model/discountValues';
@@ -19,6 +17,7 @@ import { PreschoolService } from '../service/preschool.service';
 })
 export class DiscountFormComponent implements OnInit {
 
+loading = false;
 discountForm: FormGroup;
 discount: Discount = {discountName:"", discountType:"PERCENTAGE", userType: [], discountValues:[],
                       id:0, organizationName: ""  };
@@ -67,11 +66,12 @@ userTypeList = [
   newDiscount(): void {
     this.discount.userType = this.getUserTypesFromForm();
     this.discount.discountValues = this.getDiscountValuesFromForm();
-    this.discountService.addDiscount(this.discount).subscribe((res: HttpResponse<Discount>)=>{  
-      if(res){
-          this.discountComponent.ngOnInit();
-          }
-     });
+      if(this.loading)
+      this.discountService.addDiscount(this.discount).subscribe((res: HttpResponse<Discount>)=>{  
+        if(res){
+            this.discountComponent.ngOnInit();
+            }
+      });
   }
 
   newDiscountValues(): void {
@@ -96,6 +96,7 @@ userTypeList = [
 
         this.discountValuesService.addDiscountValues(discountValue)
         .subscribe((res: HttpResponse<DiscountValues>)=>{  
+          this.loading = true;
           if(res){
               discountValues.push(res.body);
                 }

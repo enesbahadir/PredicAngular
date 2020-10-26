@@ -42,9 +42,9 @@ export class DiscountValuesService {
 
   /** POST: add a new discount values to the server */
    addDiscountValues(discountValues: DiscountValues) {
-    return this.http.post<DiscountValues>(`${this.discountValuesUrl}`, discountValues, {
-      observe: 'response'
-    });
+      return this.http.post<DiscountValues>(`${this.discountValuesUrl}`, discountValues, {
+        observe: 'response'
+      });
   }
 
   /** DELETE: delete the discount values from the server */
