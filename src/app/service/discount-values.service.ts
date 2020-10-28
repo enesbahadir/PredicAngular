@@ -41,8 +41,9 @@ export class DiscountValuesService {
   //////// Save methods //////////
 
   /** POST: add a new discount values to the server */
-   addDiscountValues(discountValues: DiscountValues) {
-      return this.http.post<DiscountValues>(`${this.discountValuesUrl}`, discountValues, {
+   addDiscountValues(discountValues: DiscountValues, discountId: number) {
+      return this.http.post<DiscountValues>(`http://localhost:8080/discounts/${discountId}/values`,
+       discountValues, {
         observe: 'response'
       });
   }

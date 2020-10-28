@@ -21,7 +21,7 @@ export class DiscountService {
     return this.http.get(this.discountUrl)
     .pipe(
       map((data: any) => {
-        return data._embedded.discountList;
+        return data._embedded.discounts;
       }));
   }
 

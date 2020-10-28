@@ -1,5 +1,5 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=block" rel="stylesheet">
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" *ngIf="currentUser">
   <button mat-icon-button class="example-icon" routerLink="/dashboard">
     <mat-icon>home</mat-icon>
   </button>
@@ -9,6 +9,9 @@
   <button mat-raised-button color="primary" routerLink="/preschools">Preschools</button>
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
     <mat-icon>share</mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon" (click)="logout()">
+    <mat-icon>exit</mat-icon>
   </button>
 </mat-toolbar>
 <div class="mat-app-background basic-container">

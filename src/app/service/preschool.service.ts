@@ -24,7 +24,7 @@ export class PreschoolService {
     return this.http.get(this.preschoolUrl)
     .pipe(
       map((data: any) => {
-        return data._embedded.preschoolList;
+        return data._embedded.preschools;
       }),
     tap(_ => this.log('fetched preschools')),
     catchError(this.handleError<Preschool[]>('getPreschools', []))

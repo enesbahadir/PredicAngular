@@ -18,6 +18,7 @@ export class DiscountComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDiscounts();
+    
     this.displayedColumns = ['id', 'discountName', 'discountType', 'userType', 'organizationName',
     'discountValues', 'editButton', 'deleteButton'];
   }

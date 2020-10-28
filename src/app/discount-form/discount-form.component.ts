@@ -1,5 +1,5 @@
 import { HttpResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DiscountComponent } from '../discount/discount.component';
 import { Discount } from '../model/discount';
@@ -65,16 +65,24 @@ userTypeList = [
 
   newDiscount(): void {
     this.discount.userType = this.getUserTypesFromForm();
-    this.discount.discountValues = this.getDiscountValuesFromForm();
-      if(this.loading)
-      this.discountService.addDiscount(this.discount).subscribe((res: HttpResponse<Discount>)=>{  
-        if(res){
-            this.discountComponent.ngOnInit();
-            }
-      });
+    this.discountService.addDiscount(this.discount).subscribe((res: HttpResponse<Discount>)=>{  
+      if(res){
+        this.discount.id = res.body.id;
+        this.getDiscountValuesFromForm(this.discount.id);
+          }
+    });
+   
+      
   }
 
-  newDiscountValues(): void {
+  updateDiscountValues(discountValues: DiscountValues[]): void {
+    debugger;
+    this.discount.discountValues = discountValues;
+     this.discountService.updateDiscount(this.discount).subscribe((res: HttpResponse<Discount>)=>{  
+      if(res){
+          this.discountComponent.ngOnInit();
+          }
+    }); 
   }
 
   getUserTypesFromForm()
@@ -86,19 +94,24 @@ userTypeList = [
     return discountUserTypes;
   }
 
-  getDiscountValuesFromForm() {
+  getDiscountValuesFromForm(discountId: number) {
     let discountValues: DiscountValues[] = [];
     for (let i= 0; i < this.preschools.length; i++) {
-       if(document.getElementsByName('discountValuesCheckBox'+i)[0].checked)
+      let checked = (<HTMLInputElement><unknown>document.getElementsByName('discountValuesCheckBox'+i)[0]).checked;
+       if(checked)
        { 
-        let discountValue : DiscountValues = {id: 0, preschool: this.preschools[i], 
-          value: Number(<HTMLInputElement>document.getElementById('discountValuesText'+i).value) };
-
-        this.discountValuesService.addDiscountValues(discountValue)
+        let value = (<HTMLInputElement><unknown>document.getElementById('discountValuesText' + i)).value;
+        let discountValue : DiscountValues = {
+          id: 0, preschool: this.preschools[i], 
+          value: Number(value) 
+        };
+        this.loading = true;
+        this.discountValuesService.addDiscountValues(discountValue, discountId)
         .subscribe((res: HttpResponse<DiscountValues>)=>{  
-          this.loading = true;
+          this.loading = false;
           if(res){
               discountValues.push(res.body);
+              this.updateDiscountValues(discountValues);
                 }
            });
        }
@@ -106,6 +119,5 @@ userTypeList = [
     return discountValues; 
     
   }
-
-
+  
 }

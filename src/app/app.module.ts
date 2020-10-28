@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PreschoolComponent } from './preschools/preschool.component';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PreschoolDetailComponent } from './preschool-detail/preschool-detail.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -50,6 +51,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
+import { UserComponent } from './user/user.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -60,12 +64,16 @@ import {OverlayModule} from '@angular/cdk/overlay';
     DashboardComponent,
     DiscountComponent,
     DiscountDetailComponent,
-    DiscountFormComponent
+    DiscountFormComponent,
+    UserComponent,
+    RegisterComponent,
+    LoginComponent
     
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
