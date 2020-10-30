@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';  
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -54,6 +55,7 @@ import {OverlayModule} from '@angular/cdk/overlay';
 import { UserComponent } from './user/user.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -67,11 +69,13 @@ import { LoginComponent } from './login/login.component';
     DiscountFormComponent,
     UserComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    AlertComponent
     
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,

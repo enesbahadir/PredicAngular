@@ -5,3 +5,11 @@
   align-items: center;
 }
 
+.discount-content {
+  display: flex;
+  margin: 30px auto 32px;
+  padding: 0 16px;
+  max-width: 960px;
+  justify-content: center;
+  align-items: center;
+}

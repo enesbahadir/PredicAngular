@@ -1,63 +1,65 @@
-<section>
-    <mat-table class="matTable" [dataSource]="discounts">
-        <ng-container matColumnDef="id">
-            <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
-          </ng-container>
+<div class="discount-content">
+  <section>
+      <mat-table class="matTable" [dataSource]="discounts">
+          <ng-container matColumnDef="id">
+              <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+              <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+            </ng-container>
 
-      <ng-container matColumnDef="discountName">
-        <mat-header-cell *matHeaderCellDef> Discount Name </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.discountName}} </mat-cell>
-      </ng-container>
+        <ng-container matColumnDef="discountName">
+          <mat-header-cell *matHeaderCellDef> Discount Name </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.discountName}} </mat-cell>
+        </ng-container>
 
-      <ng-container matColumnDef="discountType">
-        <mat-header-cell *matHeaderCellDef> Discount Type </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.discountType}} </mat-cell>
-      </ng-container>
+        <ng-container matColumnDef="discountType">
+          <mat-header-cell *matHeaderCellDef> Discount Type </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.discountType}} </mat-cell>
+        </ng-container>
 
-      <ng-container matColumnDef="userType">
-        <mat-header-cell *matHeaderCellDef> User Types </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.userType }} </mat-cell>
-      </ng-container>
+        <ng-container matColumnDef="userType">
+          <mat-header-cell *matHeaderCellDef> User Types </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.userType }} </mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="organizationName">
-        <mat-header-cell *matHeaderCellDef> Organization Name </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.organizationName}} </mat-cell>
-      </ng-container>
+      <ng-container matColumnDef="organizationName">
+          <mat-header-cell *matHeaderCellDef> Organization Name </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.organizationName}} </mat-cell>
+        </ng-container>
 
-      <ng-container matColumnDef="discountValues">
-        <mat-header-cell *matHeaderCellDef fxFlex="50"> Discount Values </mat-header-cell>
-        <mat-cell *matCellDef="let row" fxFlex="50"> 
-          <span class="ellipsis" *ngFor="let value of row.discountValues"> {{value.preschool.preschoolName}}  <br/> {{value.value}} </span>
-         </mat-cell>
-      </ng-container>
+        <ng-container matColumnDef="discountValues">
+          <mat-header-cell *matHeaderCellDef fxFlex="50"> Discount Values </mat-header-cell>
+          <mat-cell *matCellDef="let row" fxFlex="50"> 
+            <span class="ellipsis" *ngFor="let value of row.discountValues"> {{value.preschool.preschoolName}}  <br/> {{value.value}} </span>
+          </mat-cell>
+        </ng-container>
 
-    
+      
 
-      <ng-container matColumnDef="editButton">
-        <mat-header-cell  *matHeaderCellDef > Edit </mat-header-cell>
-        <mat-cell *matCellDef="let row" >
-            <a mat-button routerLink="/discounts/{{row.id}}"><mat-icon>edit</mat-icon></a>
-       </mat-cell>
-      </ng-container>
+        <ng-container matColumnDef="editButton">
+          <mat-header-cell  *matHeaderCellDef > Edit </mat-header-cell>
+          <mat-cell *matCellDef="let row" >
+              <a mat-button routerLink="/discounts/{{row.id}}"><mat-icon>edit</mat-icon></a>
+        </mat-cell>
+        </ng-container>
 
-      <ng-container matColumnDef="deleteButton">
-        <mat-header-cell  *matHeaderCellDef > Delete </mat-header-cell>
-        <mat-cell *matCellDef="let row" >
-            <a mat-button class="delete"
-            button class="delete" title="delete preschool" 
-            (click)="delete(row)"><mat-icon>delete</mat-icon></a>
-        
-       </mat-cell>
-      </ng-container>
+        <ng-container matColumnDef="deleteButton">
+          <mat-header-cell  *matHeaderCellDef > Delete </mat-header-cell>
+          <mat-cell *matCellDef="let row" >
+              <a mat-button class="delete"
+              button class="delete" title="delete preschool" 
+              (click)="delete(row)"><mat-icon>delete</mat-icon></a>
+          
+        </mat-cell>
+        </ng-container>
 
 
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
-    </mat-table>
+      </mat-table>
   </section>
-  <br>
-  <app-discount-form></app-discount-form>
+</div>
+<br>
+<app-discount-form></app-discount-form>
 
 

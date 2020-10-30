@@ -11,10 +11,11 @@
     <mat-icon>share</mat-icon>
   </button>
   <button mat-icon-button class="example-icon" (click)="logout()">
-    <mat-icon>exit</mat-icon>
+    <mat-icon>logout</mat-icon>
   </button>
 </mat-toolbar>
 <div class="mat-app-background basic-container">
+  <app-alert></app-alert>
   <router-outlet></router-outlet>
 </div>
 
